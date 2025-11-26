@@ -1,5 +1,6 @@
 <?php
-// Ստուգել POST հարցման առկայությունը
+  session_start();
+  var_dump($_SESSION);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $errors = [];
@@ -75,6 +76,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($gender)) {
         $errors[] = "Սեռը պարտադիր է ընտրել";
     }
+    $_SESSION['errors'] = $errors;
+    header("Location: das_form.php");
+    exit();
     
     // Եթե սխալներ կան՝ ցուցադրել
     if (!empty($errors)) {
@@ -207,7 +211,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </html>";
     }
 } else {
-    header("Location: das_form.php");
-    exit();
+  //  header("Location: das_form.php");
+   // exit();
 }
+
 ?>

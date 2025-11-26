@@ -96,11 +96,25 @@
 
             <label for="address">Address</label>
             <textarea id="address" name="address" placeholder="Enter your address"></textarea>
-
+            <label for="file">Choose file to upload</label>
+            <input type="file" id="file" name="file" enctype= />
+            
             <button type="submit">SEND</button>
 
         </form>
     </div>
+   <?php
+            session_start();
+              var_dump($_SESSION);
+       if(isset($_SESSION['errors']) && !empty($_SESSION['errors'])){
+        foreach ($_SESSION['errors'] as $error){
+            echo "<p style='color:red;'>{$error}</p>";
+        }
+       } elseif (isset($_SESSION['success'])){
+        echo "<p style='color:green;'>{$_SESSION['success']}</p>";
+      }
+       
 
+        ?>
 </body>
 </html>
